@@ -7,6 +7,11 @@ spring:
       password: qing0214
   application:
     name: my_take_away
+  redis:
+    host: localhost
+#    password: 123456
+    port: 6379
+    database: 0
 mybatis-plus:
   configuration:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
@@ -14,6 +19,7 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: assign_id
+
 server:
   port: 80
 
