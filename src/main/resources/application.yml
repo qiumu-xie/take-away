@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql:///takeaway?useSSL=false&characterEncoding=utf-8&serveTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+      username: root
+      password: qing0214
+  application:
+    name: my_take_away
+mybatis-plus:
+  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: assign_id
+server:
+  port: 80
+
+takeOut:
+  path: D:\TakeAway\img\

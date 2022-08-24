@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "takeOut.path",
+      "type": "java.lang.String",
+      "description": "Description for takeOut.path."
+  }
+] }
