@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
 * @createDate 2022-08-20 13:18:54
 * @Entity com.qiumu.pojo.User
 */
+@Mapper
 public interface UserMapper extends BaseMapper<User> {
 
 }

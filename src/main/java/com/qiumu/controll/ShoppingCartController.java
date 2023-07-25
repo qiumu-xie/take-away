@@ -5,11 +5,11 @@ import com.qiumu.common.BaseContext;
 import com.qiumu.common.R;
 import com.qiumu.pojo.ShoppingCart;
 import com.qiumu.service.ShoppingCartService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -81,10 +81,12 @@ public class ShoppingCartController {
 
     }
     @DeleteMapping("/clean")
-    public R<String> clean(){
+    public R<String> clean(HttpServletRequest request){
+
+        Long user = (Long) request.getSession().getAttribute("user");
 
         LambdaQueryWrapper<ShoppingCart> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(ShoppingCart::getUserId, BaseContext.getEmpId());
+        queryWrapper.eq(ShoppingCart::getUserId, user);
         cartService.remove(queryWrapper);
 
         return R.success("ok");

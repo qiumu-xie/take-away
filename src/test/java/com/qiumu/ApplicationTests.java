@@ -1,12 +1,9 @@
 package com.qiumu;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.qiumu.Dto.DishDto;
+import com.qiumu.mapper.AddressBookMapper;
 import com.qiumu.mapper.DishMapper;
-import com.qiumu.pojo.Dish;
-import com.qiumu.pojo.PageBean;
+import com.qiumu.pojo.AddressBook;
+import com.qiumu.service.AddressBookService;
 import com.qiumu.service.DishService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -19,13 +16,14 @@ import java.util.List;
 @SpringBootTest
 class ApplicationTests {
     @Autowired
-    private DishService dishService;
+    private AddressBookService addressBookService;
     @Autowired
-    private DishMapper dishMapper;
+    private AddressBookMapper addressBookMapper;
 
     @Test
     void test01() {
-
+        List<AddressBook> list = addressBookService.list();
+        System.out.println(list);
 
     }
 }

@@ -21,11 +21,4 @@
             <result property="consignee" column="consignee" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
-        id,number,status,
-        user_id,address_book_id,order_time,
-        checkout_time,pay_method,amount,
-        remark,phone,address,
-        user_name,consignee
-    </sql>
 </mapper>

@@ -16,9 +16,4 @@
             <result property="amount" column="amount" jdbcType="DECIMAL"/>
     </resultMap>
 
-    <sql id="Base_Column_List">
-        id,name,image,
-        order_id,dish_id,setmeal_id,
-        dish_flavor,number,amount
-    </sql>
 </mapper>

@@ -15,6 +15,8 @@ import com.qiumu.service.SetmealService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -114,6 +116,7 @@ public class SetmealController {
         return R.success(dishes);
     }
 
+    @Cacheable(value = "setmealCache",key = "#setmeal.categoryId",unless = "#result == null")
     @GetMapping("/list")
     public R<List<Setmeal>> listR(Setmeal setmeal) {
 
@@ -140,6 +143,7 @@ public class SetmealController {
         return R.success(list);
     }
 
+    @CacheEvict(value = "setmealCache",allEntries = true)
     @PostMapping
     public R<String> add(@RequestBody SetmealDto setmealDto) {
 
@@ -148,6 +152,7 @@ public class SetmealController {
         return R.success("添加成功");
     }
 
+    @CacheEvict(value = "setmealCache",allEntries = true)
     @PostMapping("/status/{status}")
     public R<String> up(@PathVariable String status, @RequestParam String ids) {
         LambdaUpdateWrapper<Setmeal> updateWrapper = new LambdaUpdateWrapper<>();
@@ -162,6 +167,7 @@ public class SetmealController {
         return R.success("ok");
     }
 
+    @CacheEvict(value = "setmealCache",allEntries = true)
     @PutMapping
     public R<String> put(@RequestBody SetmealDto setmealDto) {
         setmealService.putWithFlavor(setmealDto);
@@ -169,6 +175,7 @@ public class SetmealController {
         return R.success("修改成功");
     }
 
+    @CacheEvict(value = "setmealCache",allEntries = true)
     @DeleteMapping
     public R<String> up(@RequestParam String ids) {
 
