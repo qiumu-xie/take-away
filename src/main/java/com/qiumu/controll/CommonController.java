@@ -2,6 +2,8 @@ package com.qiumu.controll;
 
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.qiumu.common.R;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -49,7 +49,7 @@ public class CommonController {
     }
 
     @GetMapping("/download")
-    public void Get(HttpServletResponse response,String name){
+    public void Get(HttpServletResponse response, String name){
         try {
             ServletOutputStream outputStream = response.getOutputStream();
             response.setContentType("image/jpeg");
